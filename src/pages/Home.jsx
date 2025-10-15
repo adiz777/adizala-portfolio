@@ -1,38 +1,53 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
-export default function Home(){
+export default function Home() {
   return (
-    <section className="grid gap-8">
-      <div className="bg-gradient-to-br from-[#05050a] to-[#0c0c12] rounded-2xl p-10 glow border border-[#0b4f65]">
-        <h1 className="text-4xl md:text-6xl font-extrabold neon-text">Adityarajsinh Zala</h1>
-        <p className="mt-4 text-[var(--subtle)] max-w-2xl">
-          Tech‑savvy IT Support & Cybersecurity graduate building resilient systems and silent defenses.
-        </p>
+    <div className="relative min-h-screen overflow-hidden text-center text-gray-100 bg-gradient-to-b from-[#04050a] via-[#0a0a1a] to-[#07060d]">
+      {/* Animated background glow */}
+      <motion.div
+        className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#00ffe0_0%,_transparent_70%)] opacity-20 blur-3xl"
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ repeat: Infinity, duration: 10 }}
+      />
 
-        <div className="mt-6 flex flex-wrap items-center gap-4">
-          <span className="px-4 py-2 rounded-md bg-[rgba(0,180,255,0.06)] text-[var(--neon)] text-sm glow">MSc Cybersecurity</span>
-          <span className="px-4 py-2 rounded-md bg-[rgba(255,179,0,0.06)] text-[var(--gold)] text-sm">BCA</span>
-          <Link to="/projects" className="ml-auto inline-block px-5 py-3 rounded-xl neon-text border border-[rgba(0,180,255,0.12)] hover:bg-[rgba(0,180,255,0.04)]">View Projects</Link>
-        </div>
+      {/* Hero Section */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-screen space-y-6">
+        <motion.h1
+          className="text-5xl md:text-7xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          Adityarajsinh Zala
+        </motion.h1>
+
+        <motion.p
+          className="text-lg md:text-2xl text-cyan-200/80 max-w-2xl px-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          Cybersecurity Engineer | Digital Guardian | Explorer of the Dharma in Data
+        </motion.p>
+
+        <motion.div
+          className="text-xl md:text-2xl font-sans text-fuchsia-300 tracking-wide"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          तमसो मा ज्योतिर्गमय
+        </motion.div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
-        <div className="p-6 rounded-xl border border-[rgba(255,179,0,0.06)]">
-          <h3 className="font-semibold gold-accent">Mantra</h3>
-          <p className="mt-2 text-[var(--subtle)]">He who guards the unseen, walks unseen.</p>
-        </div>
-
-        <div className="p-6 rounded-xl border border-[rgba(0,180,255,0.06)]">
-          <h3 className="font-semibold neon-text">Specialization</h3>
-          <p className="mt-2 text-[var(--subtle)]">Reconnaissance scripting, network scanning, risk assessment.</p>
-        </div>
-
-        <div className="p-6 rounded-xl border border-[rgba(0,180,255,0.04)]">
-          <h3 className="font-semibold">Contact</h3>
-          <p className="mt-2 text-[var(--subtle)]">adiuk7303@gmail.com · +44 7733 290385</p>
-        </div>
-      </div>
-    </section>
+      {/* Subtle glowing footer */}
+      <motion.div
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-gray-500"
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ repeat: Infinity, duration: 4 }}
+      >
+        Om Shanti 🕉️
+      </motion.div>
+    </div>
   );
 }
