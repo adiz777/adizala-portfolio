@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Education from "./pages/Education";
@@ -62,3 +61,18 @@ export default function App() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
+          >
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/skills" element={<Skills />} />
+              <Route path="/education" element={<Education />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </motion.div>
+        </AnimatePresence>
+      </main>
+    </div>
+  );
+}
