@@ -8,7 +8,7 @@ import {
   SiDocker,
   SiCloudflare,
   SiWindows,
-  SiBurpSuite
+  SiBurpsuite
 } from "react-icons/si";
 import {
   FaShieldAlt,
@@ -25,7 +25,7 @@ const skillCategories = [
     items: [
       { name: "Kali Linux", icon: <SiKalilinux className="text-2xl" /> },
       { name: "SQLMap", icon: <AiOutlineConsoleSql className="text-2xl" /> },
-      { name: "Burp Suite", icon: <SiBurpSuite className="text-2xl" /> },
+      { name: "Burp Suite", icon: <SiBurpsuite className="text-2xl" /> },
       { name: "Metasploit Framework", icon: <FaNetworkWired className="text-2xl" /> },
     ],
   },
