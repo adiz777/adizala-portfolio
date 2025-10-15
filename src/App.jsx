@@ -1,45 +1,64 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Education from "./pages/Education";
 import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
-import Certifications from "./pages/Certifications";
 import Contact from "./pages/Contact";
 
 export default function App() {
+  const location = useLocation();
+
   return (
-    <div className="min-h-screen bg-[var(--bg)]">
-      <nav className="max-w-5xl mx-auto p-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
-          <span className="text-xl font-semibold neon-text">Adizala</span>
-          <span className="text-sm text-[var(--gold)]">• cyber-dharma</span>
-        </Link>
-        <div className="space-x-4 text-sm text-[var(--subtle)]">
-          <Link to="/about" className="hover:text-white">About</Link>
-          <Link to="/projects" className="hover:text-white">Projects</Link>
-          <Link to="/skills" className="hover:text-white">Skills</Link>
-          <Link to="/contact" className="hover:text-white">Contact</Link>
+    <div className="min-h-screen bg-[var(--bg)] text-gray-200 flex flex-col">
+      {/* 🔹 Navbar */}
+      <motion.nav
+        className="fixed top-0 left-0 w-full bg-black/30 backdrop-blur-lg border-b border-cyan-400/20 shadow-md z-50"
+        initial={{ y: -60, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="max-w-6xl mx-auto p-4 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 select-none">
+            <motion.span
+              className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500"
+              whileHover={{ scale: 1.05 }}
+            >
+              Adizala
+            </motion.span>
+            <span className="text-xs text-[var(--gold)] tracking-wide">
+              • cyber-dharma
+            </span>
+          </Link>
+
+          <div className="flex gap-6 text-sm font-medium">
+            {[
+              { name: "About", path: "/about" },
+              { name: "Projects", path: "/projects" },
+              { name: "Skills", path: "/skills" },
+              { name: "Education", path: "/education" },
+              { name: "Contact", path: "/contact" },
+            ].map((link, index) => (
+              <Link
+                key={index}
+                to={link.path}
+                className="hover:text-cyan-300 transition-all duration-200"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
         </div>
-      </nav>
+      </motion.nav>
 
-      <main className="max-w-5xl mx-auto p-6">
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/about" element={<About/>} />
-          <Route path="/education" element={<Education/>} />
-          <Route path="/skills" element={<Skills/>} />
-          <Route path="/projects" element={<Projects/>} />
-          <Route path="/certifications" element={<Certifications/>} />
-          <Route path="/contact" element={<Contact/>} />
-        </Routes>
-      </main>
-
-      <footer className="max-w-5xl mx-auto p-6 text-center text-sm text-[var(--subtle)]">
-        <div>© {new Date().getFullYear()} Adityarajsinh Zala — Adizala</div>
-        <div className="mt-2">“He who guards the unseen, walks unseen.”</div>
-      </footer>
-    </div>
-  );
-}
+      {/* 🔹 Page Content */}
+      <main className="flex-1 max-w-6xl mx-auto px-6 pt-28">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}

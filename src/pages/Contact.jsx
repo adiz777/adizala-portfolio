@@ -1,34 +1,100 @@
-import React from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
-export default function Contact(){
+export default function Contact() {
+  const [sent, setSent] = useState(false);
+
   return (
-    <section className="max-w-2xl mx-auto space-y-6">
-      <h2 className="text-2xl font-bold neon-text">Contact</h2>
+    <div className="min-h-screen bg-gradient-to-b from-[#050508] via-[#0a0a15] to-[#07060d] flex flex-col items-center justify-center px-6 py-12 text-gray-100">
+      
+      {/* Title */}
+      <motion.h1
+        className="text-5xl md:text-6xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500"
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        Contact
+      </motion.h1>
 
-      <form action="https://formspree.io/f/your-form-id" method="POST" className="grid gap-4">
-        <label className="block">
-          <div className="text-sm text-[var(--subtle)]">Name</div>
-          <input name="name" required className="mt-1 w-full rounded-md bg-[#06060a] border border-[rgba(255,255,255,0.04)] p-3" />
-        </label>
+      {/* Form Section */}
+      {!sent ? (
+        <motion.form
+          action="https://formspree.io/f/mpwyklqb"
+          method="POST"
+          className="w-full max-w-lg bg-white/5 border border-cyan-500/20 rounded-2xl p-8 backdrop-blur-lg shadow-lg space-y-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          onSubmit={() => setSent(true)}
+        >
+          <motion.div
+            className="flex flex-col"
+            whileFocus={{ scale: 1.02 }}
+          >
+            <label className="text-cyan-300 mb-2 font-medium">Your Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              className="bg-transparent border border-cyan-500/30 rounded-lg px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+              placeholder="Enter your name"
+            />
+          </motion.div>
 
-        <label className="block">
-          <div className="text-sm text-[var(--subtle)]">Email</div>
-          <input type="email" name="_replyto" required className="mt-1 w-full rounded-md bg-[#06060a] border border-[rgba(255,255,255,0.04)] p-3" />
-        </label>
+          <motion.div className="flex flex-col">
+            <label className="text-cyan-300 mb-2 font-medium">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              required
+              className="bg-transparent border border-cyan-500/30 rounded-lg px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+              placeholder="Enter your email"
+            />
+          </motion.div>
 
-        <label className="block">
-          <div className="text-sm text-[var(--subtle)]">Message</div>
-          <textarea name="message" rows="6" required className="mt-1 w-full rounded-md bg-[#06060a] border border-[rgba(255,255,255,0.04)] p-3"></textarea>
-        </label>
+          <motion.div className="flex flex-col">
+            <label className="text-cyan-300 mb-2 font-medium">Message</label>
+            <textarea
+              name="message"
+              required
+              rows="5"
+              className="bg-transparent border border-cyan-500/30 rounded-lg px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 resize-none"
+              placeholder="Type your encrypted message..."
+            ></textarea>
+          </motion.div>
 
-        <input type="hidden" name="_subject" value="New contact from portfolio" />
-        <button type="submit" className="self-start px-6 py-3 rounded-xl neon-text border border-[rgba(0,180,255,0.12)]">Send</button>
-      </form>
+          <motion.button
+            type="submit"
+            className="w-full bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Send Message
+          </motion.button>
+        </motion.form>
+      ) : (
+        <motion.div
+          className="text-center mt-12 text-xl text-cyan-300"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <p>✅ Message sent successfully.</p>
+          <p className="text-fuchsia-400 mt-2 italic">
+            “Your signal has reached the void. Expect a response soon.”
+          </p>
+        </motion.div>
+      )}
 
-      <div className="pt-6 text-[var(--subtle)]">
-        <div>Email: adiuk7303@gmail.com</div>
-        <div>Phone: +44 7733 290385</div>
-      </div>
-    </section>
+      {/* Mantra */}
+      <motion.div
+        className="mt-20 text-xl text-fuchsia-300 tracking-wide"
+        animate={{ opacity: [0.6, 1, 0.6] }}
+        transition={{ repeat: Infinity, duration: 5 }}
+      >
+        तमसो मा ज्योतिर्गमय
+      </motion.div>
+    </div>
   );
 }

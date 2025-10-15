@@ -1,26 +1,69 @@
 import { motion } from "framer-motion";
+import {
+  SiKali, SiLinux, SiPython, SiWireshark, SiGithub,
+  SiNmap, SiDocker, SiCloudflare, SiWindows, SiBurpsuite
+} from "react-icons/si";
+import { FaShieldAlt, FaSkullCrossbones, FaNetworkWired, FaLock } from "react-icons/fa";
 
-const skills = [
-  { group: "Frontend", items: ["React", "Vite", "Tailwind CSS", "JavaScript (ES6+)"] },
-  { group: "Backend", items: ["Node.js", "Express", "MongoDB", "REST APIs"] },
-  { group: "Cybersecurity", items: ["Kali Linux", "Wireshark", "Burp Suite", "Nmap", "Metasploit"] },
-  { group: "Cloud & Tools", items: ["Git", "GitHub", "Docker", "Cloudflare", "Vercel"] },
+const skillCategories = [
+  {
+    title: "Offensive Operations",
+    icon: <FaSkullCrossbones className="text-fuchsia-400 text-3xl" />,
+    items: [
+      { name: "Kali Linux", icon: <SiKali /> },
+      { name: "Nmap", icon: <SiNmap /> },
+      { name: "Burp Suite", icon: <SiBurpsuite /> },
+      { name: "Metasploit Framework", icon: <FaNetworkWired /> },
+    ],
+  },
+  {
+    title: "Defensive Security",
+    icon: <FaShieldAlt className="text-cyan-400 text-3xl" />,
+    items: [
+      { name: "Network Defense", icon: <FaLock /> },
+      { name: "Incident Response", icon: <SiWindows /> },
+      { name: "Vulnerability Management", icon: <SiDocker /> },
+      { name: "Cloudflare Security", icon: <SiCloudflare /> },
+    ],
+  },
+  {
+    title: "Analysis & Forensics",
+    icon: <FaNetworkWired className="text-fuchsia-400 text-3xl" />,
+    items: [
+      { name: "Wireshark", icon: <SiWireshark /> },
+      { name: "Python for Analysis", icon: <SiPython /> },
+      { name: "Packet Analysis", icon: <FaNetworkWired /> },
+      { name: "Threat Intelligence", icon: <SiGithub /> },
+    ],
+  },
+  {
+    title: "Systems & OS",
+    icon: <SiLinux className="text-cyan-400 text-3xl" />,
+    items: [
+      { name: "Linux Administration", icon: <SiLinux /> },
+      { name: "Windows Security", icon: <SiWindows /> },
+      { name: "Server Hardening", icon: <FaShieldAlt /> },
+      { name: "Docker Containers", icon: <SiDocker /> },
+    ],
+  },
 ];
 
 export default function Skills() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#050508] via-[#0a0a15] to-[#07060d] text-gray-100 flex flex-col items-center px-6 py-12">
+      {/* Heading */}
       <motion.h1
         className="text-5xl md:text-6xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500"
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        Skills
+        Cybersecurity Skills
       </motion.h1>
 
-      <div className="grid md:grid-cols-2 gap-10 w-full max-w-5xl">
-        {skills.map((section, index) => (
+      {/* Skill Sections */}
+      <div className="grid md:grid-cols-2 gap-10 w-full max-w-6xl">
+        {skillCategories.map((category, index) => (
           <motion.div
             key={index}
             className="border border-cyan-500/30 rounded-2xl p-6 backdrop-blur-md bg-white/5 shadow-lg hover:shadow-cyan-500/20 transition"
@@ -29,18 +72,24 @@ export default function Skills() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.2 }}
           >
-            <h3 className="text-2xl font-semibold mb-4 text-fuchsia-400">{section.group}</h3>
-            <ul className="space-y-2">
-              {section.items.map((skill, i) => (
+            <div className="flex items-center gap-3 mb-4">
+              {category.icon}
+              <h3 className="text-2xl font-semibold text-fuchsia-400">{category.title}</h3>
+            </div>
+            <ul className="space-y-3">
+              {category.items.map((skill, i) => (
                 <motion.li
                   key={i}
-                  className="flex items-center justify-between text-gray-300 hover:text-cyan-300"
+                  className="flex items-center justify-between text-gray-300 hover:text-cyan-300 text-lg"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <span>{skill}</span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-cyan-400 text-2xl">{skill.icon}</span>
+                    <span>{skill.name}</span>
+                  </div>
                   <motion.span
                     className="w-2 h-2 bg-cyan-400 rounded-full"
-                    animate={{ opacity: [0.4, 1, 0.4] }}
+                    animate={{ opacity: [0.3, 1, 0.3] }}
                     transition={{ repeat: Infinity, duration: 2 + i * 0.3 }}
                   ></motion.span>
                 </motion.li>
