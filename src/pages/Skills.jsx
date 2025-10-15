@@ -1,49 +1,62 @@
 import { motion } from "framer-motion";
 import {
-  SiKalilinux, SiLinux, SiPython, SiWireshark, SiGithub,
-  SiNmap, SiDocker, SiCloudflare, SiWindows, SiBurpsuite
+  SiKalilinux,
+  SiLinux,
+  SiPython,
+  SiWireshark,
+  SiGithub,
+  SiDocker,
+  SiCloudflare,
+  SiWindows,
+  SiBurpSuite
 } from "react-icons/si";
-import { FaShieldAlt, FaSkullCrossbones, FaNetworkWired, FaLock } from "react-icons/fa";
+import {
+  FaShieldAlt,
+  FaSkullCrossbones,
+  FaNetworkWired,
+  FaLock
+} from "react-icons/fa";
+import { AiOutlineConsoleSql } from "react-icons/ai";
 
 const skillCategories = [
   {
     title: "Offensive Operations",
     icon: <FaSkullCrossbones className="text-fuchsia-400 text-3xl" />,
     items: [
-      { name: "Kali Linux", icon: <SiKalilinux /> },
-      { name: "Nmap", icon: <SiNmap /> },
-      { name: "Burp Suite", icon: <SiBurpsuite /> },
-      { name: "Metasploit Framework", icon: <FaNetworkWired /> },
+      { name: "Kali Linux", icon: <SiKalilinux className="text-2xl" /> },
+      { name: "SQLMap", icon: <AiOutlineConsoleSql className="text-2xl" /> },
+      { name: "Burp Suite", icon: <SiBurpSuite className="text-2xl" /> },
+      { name: "Metasploit Framework", icon: <FaNetworkWired className="text-2xl" /> },
     ],
   },
   {
     title: "Defensive Security",
     icon: <FaShieldAlt className="text-cyan-400 text-3xl" />,
     items: [
-      { name: "Network Defense", icon: <FaLock /> },
-      { name: "Incident Response", icon: <SiWindows /> },
-      { name: "Vulnerability Management", icon: <SiDocker /> },
-      { name: "Cloudflare Security", icon: <SiCloudflare /> },
+      { name: "Network Defense", icon: <FaLock className="text-2xl" /> },
+      { name: "Incident Response", icon: <SiWindows className="text-2xl" /> },
+      { name: "Vulnerability Management", icon: <SiDocker className="text-2xl" /> },
+      { name: "Cloudflare Security", icon: <SiCloudflare className="text-2xl" /> },
     ],
   },
   {
     title: "Analysis & Forensics",
     icon: <FaNetworkWired className="text-fuchsia-400 text-3xl" />,
     items: [
-      { name: "Wireshark", icon: <SiWireshark /> },
-      { name: "Python for Analysis", icon: <SiPython /> },
-      { name: "Packet Analysis", icon: <FaNetworkWired /> },
-      { name: "Threat Intelligence", icon: <SiGithub /> },
+      { name: "Wireshark", icon: <SiWireshark className="text-2xl" /> },
+      { name: "Python for Analysis", icon: <SiPython className="text-2xl" /> },
+      { name: "Packet Analysis", icon: <FaNetworkWired className="text-2xl" /> },
+      { name: "Threat Intelligence", icon: <SiGithub className="text-2xl" /> },
     ],
   },
   {
     title: "Systems & OS",
     icon: <SiLinux className="text-cyan-400 text-3xl" />,
     items: [
-      { name: "Linux Administration", icon: <SiLinux /> },
-      { name: "Windows Security", icon: <SiWindows /> },
-      { name: "Server Hardening", icon: <FaShieldAlt /> },
-      { name: "Docker Containers", icon: <SiDocker /> },
+      { name: "Linux Administration", icon: <SiLinux className="text-2xl" /> },
+      { name: "Windows Security", icon: <SiWindows className="text-2xl" /> },
+      { name: "Server Hardening", icon: <FaShieldAlt className="text-2xl" /> },
+      { name: "Docker Containers", icon: <SiDocker className="text-2xl" /> },
     ],
   },
 ];
