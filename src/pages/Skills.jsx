@@ -7,7 +7,7 @@ import {
   SiGithub,
   SiDocker,
   SiCloudflare,
-  SiWindows,
+  FaWindows,
   SiBurpsuite
 } from "react-icons/si";
 import {
@@ -34,7 +34,7 @@ const skillCategories = [
     icon: <FaShieldAlt className="text-cyan-400 text-3xl" />,
     items: [
       { name: "Network Defense", icon: <FaLock className="text-2xl" /> },
-      { name: "Incident Response", icon: <SiWindows className="text-2xl" /> },
+      { name: "Incident Response", icon: <FaWindows className="text-2xl" /> },
       { name: "Vulnerability Management", icon: <SiDocker className="text-2xl" /> },
       { name: "Cloudflare Security", icon: <SiCloudflare className="text-2xl" /> },
     ],
@@ -54,7 +54,7 @@ const skillCategories = [
     icon: <SiLinux className="text-cyan-400 text-3xl" />,
     items: [
       { name: "Linux Administration", icon: <SiLinux className="text-2xl" /> },
-      { name: "Windows Security", icon: <SiWindows className="text-2xl" /> },
+      { name: "Windows Security", icon: <FaWindows className="text-2xl" /> },
       { name: "Server Hardening", icon: <FaShieldAlt className="text-2xl" /> },
       { name: "Docker Containers", icon: <SiDocker className="text-2xl" /> },
     ],
