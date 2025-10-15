@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import {
-  SiKali, SiLinux, SiPython, SiWireshark, SiGithub,
+  SiKalilinux, SiLinux, SiPython, SiWireshark, SiGithub,
   SiNmap, SiDocker, SiCloudflare, SiWindows, SiBurpsuite
 } from "react-icons/si";
 import { FaShieldAlt, FaSkullCrossbones, FaNetworkWired, FaLock } from "react-icons/fa";
@@ -10,7 +10,7 @@ const skillCategories = [
     title: "Offensive Operations",
     icon: <FaSkullCrossbones className="text-fuchsia-400 text-3xl" />,
     items: [
-      { name: "Kali Linux", icon: <SiKali /> },
+      { name: "Kali Linux", icon: <SiKalilinux /> },
       { name: "Nmap", icon: <SiNmap /> },
       { name: "Burp Suite", icon: <SiBurpsuite /> },
       { name: "Metasploit Framework", icon: <FaNetworkWired /> },
