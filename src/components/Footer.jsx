@@ -27,7 +27,7 @@ export default function Footer() {
             <FaGithub />
           </a>
           <a
-            href="https://www.linkedin.com/in/adityarajsinh-zala?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            href="https://www.linkedin.com/in/adityarajsinh-zala"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-fuchsia-400 transition-all"
@@ -35,7 +35,7 @@ export default function Footer() {
             <FaLinkedin />
           </a>
           <a
-            href="mailto:adiz_14@proton.me"
+            href="mailto:adiuk7303@gmail.com"
             className="hover:text-fuchsia-400 transition-all"
           >
             <FaEnvelope />
