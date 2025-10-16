@@ -15,7 +15,6 @@ import {
   FaShieldAlt,
   FaLock,
   FaNetworkWired,
-  FaFireAlt,
 } from "react-icons/fa";
 import { AiOutlineConsoleSql } from "react-icons/ai";
 import { MdSecurity } from "react-icons/md";
@@ -68,9 +67,9 @@ const categories = [
 
 export default function Skills() {
   return (
-    <section className="min-h-screen text-gray-200 py-20 px-6">
+    <section className="min-h-screen text-gray-200 py-16 px-4 sm:px-6 md:px-10">
       <motion.h1
-        className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500"
+        className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-14 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -80,7 +79,7 @@ export default function Skills() {
 
       {/* 🔹 Full Skills Grid */}
       <motion.div
-        className="max-w-6xl mx-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-8 mb-20"
+        className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-6 sm:gap-8 mb-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
@@ -89,16 +88,16 @@ export default function Skills() {
           <motion.div
             key={i}
             whileHover={{
-              scale: 1.15,
-              boxShadow: "0 0 25px rgba(0,255,255,0.4)",
+              scale: 1.1,
+              boxShadow: "0 0 20px rgba(0,255,255,0.4)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="flex flex-col items-center justify-center bg-gradient-to-b from-gray-900/70 to-black/70 border border-cyan-400/10 rounded-2xl py-6 px-4 shadow-md hover:shadow-cyan-400/30 transition-all group cursor-pointer"
+            className="flex flex-col items-center justify-center bg-gradient-to-b from-gray-900/80 to-black/70 border border-cyan-400/10 rounded-2xl py-6 px-4 shadow-md hover:shadow-cyan-400/30 transition-all group cursor-pointer"
           >
-            <div className="text-3xl text-cyan-400 group-hover:text-fuchsia-400 transition-colors duration-300 mb-2">
+            <div className="text-3xl sm:text-4xl md:text-5xl text-cyan-400 group-hover:text-fuchsia-400 transition-colors duration-300 mb-2">
               {skill.icon}
             </div>
-            <p className="text-sm font-medium text-gray-300 group-hover:text-white text-center tracking-wide">
+            <p className="text-xs sm:text-sm md:text-base font-medium text-gray-300 group-hover:text-white text-center tracking-wide">
               {skill.name}
             </p>
           </motion.div>
@@ -106,27 +105,29 @@ export default function Skills() {
       </motion.div>
 
       {/* 🔹 Category Panels */}
-      <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
         {categories.map((cat, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 + idx * 0.2 }}
-            className="bg-black/40 border border-cyan-400/20 rounded-2xl p-6 shadow-lg hover:shadow-cyan-400/30 transition-all"
+            className="bg-black/40 border border-cyan-400/20 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-cyan-400/30 transition-all"
           >
             <h2
-              className={`text-xl font-semibold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${cat.color}`}
+              className={`text-lg sm:text-xl md:text-2xl font-semibold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${cat.color}`}
             >
               {cat.title}
             </h2>
-            <p className="text-gray-400 text-sm leading-relaxed">{cat.desc}</p>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+              {cat.desc}
+            </p>
           </motion.div>
         ))}
       </div>
 
       <motion.p
-        className="text-center mt-20 text-[var(--gold)] italic"
+        className="text-center mt-20 text-[var(--gold)] italic text-sm sm:text-base md:text-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
