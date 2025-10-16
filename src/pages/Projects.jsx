@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaFire, FaCode, FaShieldAlt, FaLinux, FaPython, FaTools } from "react-icons/fa";
-import { SiBash, SiGithub } from "react-icons/si";
+import { SiGnubash, SiGithub } from "react-icons/si";
 
 export default function Projects() {
   const projects = [
@@ -15,7 +15,7 @@ export default function Projects() {
         "Planned 'Attack Mode' for post-recon workflows"
       ],
       tech: [
-        { icon: <SiBash />, name: "Bash" },
+        { icon: <SiGnubash />, name: "Bash" },
         { icon: <FaLinux />, name: "Linux" },
         { icon: <SiGithub />, name: "GitHub" }
       ],
