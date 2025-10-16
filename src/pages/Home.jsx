@@ -1,74 +1,88 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { FaShieldAlt } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#050508] via-[#0a0a15] to-[#07060d] text-gray-100 overflow-hidden relative">
-      
-      {/* Animated Background Glow */}
+    <section className="min-h-screen flex flex-col justify-center items-center text-gray-200 px-6 text-center">
+      {/* Main Hero */}
       <motion.div
-        className="absolute w-[40rem] h-[40rem] bg-gradient-to-r from-cyan-500/30 to-fuchsia-500/30 rounded-full blur-[200px]"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.7, 0.5] }}
-        transition={{ repeat: Infinity, duration: 10 }}
-      />
-
-      {/* Heading */}
-      <motion.h1
-        className="text-6xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500 z-10"
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        Adityarajsinh Zala
-      </motion.h1>
-
-      <motion.h2
-        className="mt-4 text-xl md:text-2xl text-cyan-300 tracking-widest z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
+        transition={{ duration: 1 }}
+        className="max-w-3xl"
       >
-        Cybersecurity Practitioner • Developer • Seeker
-      </motion.h2>
+        <motion.h1
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          Adityarajsinh Zala
+        </motion.h1>
 
-      <motion.p
-        className="mt-8 max-w-2xl text-center text-gray-400 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-      >
-        “In the silence between data and defense lies awareness. Every signal carries intent, 
-        every system reflects consciousness. I build to protect, automate, and awaken.”
-      </motion.p>
+        <motion.h2
+          className="text-lg sm:text-xl md:text-2xl text-gray-400 font-medium mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          Cybersecurity Researcher • Ethical Hacker • Digital Sentinel
+        </motion.h2>
 
+        <motion.p
+          className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          Building tools that defend, monitor, and reveal the unseen.
+          <br />
+          Guided by dharma, discipline, and digital awareness.
+        </motion.p>
+
+        {/* Call to Action */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <Link
+            to="/projects"
+            className="px-6 py-3 text-sm sm:text-base rounded-xl bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white font-semibold hover:scale-105 transition-transform shadow-lg shadow-cyan-500/20"
+          >
+            Explore My Work
+          </Link>
+          <Link
+            to="/contact"
+            className="px-6 py-3 text-sm sm:text-base rounded-xl border border-cyan-400 text-cyan-300 hover:bg-cyan-500/10 transition-all"
+          >
+            Contact Me
+          </Link>
+        </motion.div>
+      </motion.div>
+
+      {/* Symbolic Icon */}
       <motion.div
-        className="mt-12 flex gap-6 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        className="mt-14 text-cyan-400 text-5xl sm:text-6xl md:text-7xl"
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
       >
-        <Link
-          to="/about"
-          className="px-6 py-3 rounded-xl border border-cyan-400/50 text-cyan-300 hover:text-fuchsia-300 hover:border-fuchsia-400 transition-all font-semibold shadow-lg hover:shadow-fuchsia-500/30"
-        >
-          Enter Realm
-        </Link>
-        <Link
-          to="/contact"
-          className="px-6 py-3 rounded-xl border border-fuchsia-400/50 text-fuchsia-300 hover:text-cyan-300 hover:border-cyan-400 transition-all font-semibold shadow-lg hover:shadow-cyan-500/30"
-        >
-          Send a Signal
-        </Link>
+        <FaShieldAlt className="drop-shadow-[0_0_15px_rgba(0,255,255,0.5)]" />
       </motion.div>
 
       {/* Mantra */}
-      <motion.div
-        className="mt-20 text-xl text-fuchsia-300 tracking-wide z-10"
-        animate={{ opacity: [0.6, 1, 0.6] }}
-        transition={{ repeat: Infinity, duration: 5 }}
+      <motion.p
+        className="mt-10 text-[var(--gold)] italic text-sm sm:text-base text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4 }}
       >
-        तमसो मा ज्योतिर्गमय
-      </motion.div>
-    </div>
+        “धर्मो रक्षति रक्षितः — Dharma protects those who protect it.”
+      </motion.p>
+    </section>
   );
 }
