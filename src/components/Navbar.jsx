@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const links = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
@@ -13,7 +17,7 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-fuchsia-400/10 shadow-lg"
+      className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-cyan-400/10 shadow-lg"
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
@@ -27,8 +31,8 @@ export default function Navbar() {
           Major_ADI
         </motion.div>
 
-        {/* Nav Links */}
-        <ul className="flex gap-6 md:gap-10 text-gray-300 text-lg font-medium">
+        {/* Desktop Nav */}
+        <ul className="hidden md:flex gap-6 lg:gap-10 text-gray-300 text-lg font-medium">
           {links.map((link, index) => (
             <motion.li
               key={index}
@@ -50,7 +54,53 @@ export default function Navbar() {
             </motion.li>
           ))}
         </ul>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden text-cyan-400 text-2xl cursor-pointer">
+          {menuOpen ? (
+            <FaTimes onClick={() => setMenuOpen(false)} />
+          ) : (
+            <FaBars onClick={() => setMenuOpen(true)} />
+          )}
+        </div>
       </div>
+
+      {/* Mobile Nav Links */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-[#0a0a0f]/95 border-t border-cyan-400/10 backdrop-blur-lg"
+          >
+            <ul className="flex flex-col items-center py-6 space-y-4 text-lg text-gray-300">
+              {links.map((link, index) => (
+                <motion.li
+                  key={index}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <NavLink
+                    to={link.path}
+                    onClick={() => setMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `block transition-all duration-300 ${
+                        isActive
+                          ? "text-fuchsia-400 border-b-2 border-fuchsia-500 pb-1"
+                          : "hover:text-cyan-300"
+                      }`
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
