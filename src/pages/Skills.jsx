@@ -1,7 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-// Simple Icons
 import {
   SiKalilinux,
   SiLinux,
@@ -10,160 +8,125 @@ import {
   SiGithub,
   SiDocker,
   SiCloudflare,
-  SiBurpsuite
+  SiBurpsuite,
 } from "react-icons/si";
-
-// Font Awesome
 import {
   FaWindows,
   FaShieldAlt,
-  FaSkullCrossbones,
+  FaLock,
   FaNetworkWired,
-  FaLock
+  FaFireAlt,
 } from "react-icons/fa";
-
-// Ant Design
 import { AiOutlineConsoleSql } from "react-icons/ai";
-
-// Material Design
 import { MdSecurity } from "react-icons/md";
-
-// Ionicons
 import { IoIosAnalytics } from "react-icons/io";
-
-// BoxIcons
 import { BiGitBranch } from "react-icons/bi";
-
-// Remix Icons
 import { RiShieldStarLine } from "react-icons/ri";
 
-// Skill categories
 const skillCategories = [
   {
-    category: "Offensive",
+    category: "Offensive Security",
+    color: "from-cyan-400 to-fuchsia-500",
     skills: [
       { name: "Kali Linux", icon: <SiKalilinux /> },
-      { name: "Python", icon: <SiPython /> },
+      { name: "Python Scripting", icon: <SiPython /> },
       { name: "Burp Suite", icon: <SiBurpsuite /> },
-      { name: "SQLMap", icon: <AiOutlineConsoleSql /> }
-    ]
+      { name: "SQLMap", icon: <AiOutlineConsoleSql /> },
+    ],
   },
   {
-    category: "Defensive",
+    category: "Defensive Security",
+    color: "from-fuchsia-500 to-yellow-400",
     skills: [
-      { name: "Network Security", icon: <FaShieldAlt /> },
-      { name: "Lock/Encryption", icon: <FaLock /> },
-      { name: "Advanced Security", icon: <RiShieldStarLine /> },
-      { name: "Security Tools", icon: <MdSecurity /> }
-    ]
+      { name: "Network Defense", icon: <FaShieldAlt /> },
+      { name: "Encryption & Locks", icon: <FaLock /> },
+      { name: "Threat Detection", icon: <RiShieldStarLine /> },
+      { name: "System Hardening", icon: <MdSecurity /> },
+    ],
   },
   {
-    category: "Networking",
+    category: "Networking & Analysis",
+    color: "from-blue-400 to-cyan-400",
     skills: [
       { name: "Wireshark", icon: <SiWireshark /> },
-      { name: "Networking", icon: <FaNetworkWired /> },
-      { name: "Analytics", icon: <IoIosAnalytics /> }
-    ]
+      { name: "Network Mapping", icon: <FaNetworkWired /> },
+      { name: "Traffic Analytics", icon: <IoIosAnalytics /> },
+    ],
   },
   {
     category: "Platforms & Tools",
+    color: "from-amber-400 to-fuchsia-400",
     skills: [
       { name: "Linux", icon: <SiLinux /> },
       { name: "Windows", icon: <FaWindows /> },
       { name: "Docker", icon: <SiDocker /> },
       { name: "Cloudflare", icon: <SiCloudflare /> },
       { name: "GitHub", icon: <SiGithub /> },
-      { name: "Git Branching", icon: <BiGitBranch /> }
-    ]
-  }
+      { name: "Git Branching", icon: <BiGitBranch /> },
+    ],
+  },
 ];
 
-const Skills = () => {
+export default function Skills() {
   return (
-    <div className="skills-wrapper">
-      <h2 className="skills-title">My Skills</h2>
-      {skillCategories.map((category, idx) => (
-        <div key={idx} className="skill-category">
-          <h3 className="category-title">{category.category}</h3>
-          <div className="skills-grid">
-            {category.skills.map((skill, index) => (
-              <motion.div
-                key={index}
-                className="skill-card"
-                whileHover={{ scale: 1.1, boxShadow: "0 0 20px #00f0ff" }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="icon">{skill.icon}</div>
-                <p className="name">{skill.name}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      ))}
+    <section className="min-h-screen text-gray-200 py-20 px-6">
+      <motion.h1
+        className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        My Cyber Arsenal
+      </motion.h1>
 
-      {/* Embedded CSS */}
-      <style jsx>{`
-        .skills-wrapper {
-          padding: 2rem 1rem;
-        }
+      <div className="max-w-6xl mx-auto grid gap-16">
+        {skillCategories.map((cat, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.2 }}
+            className="rounded-2xl bg-black/40 border border-cyan-400/20 p-8 shadow-lg hover:shadow-cyan-400/30 transition-all"
+          >
+            <h2
+              className={`text-2xl font-semibold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r ${cat.color}`}
+            >
+              {cat.category}
+            </h2>
 
-        .skills-title {
-          font-size: 2.2rem;
-          font-weight: bold;
-          text-align: center;
-          margin-bottom: 2.5rem;
-          color: #00f0ff;
-          text-shadow: 0 0 10px #00f0ff;
-        }
+            {/* Responsive glowing grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+              {cat.skills.map((skill, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{
+                    scale: 1.15,
+                    boxShadow: "0 0 25px rgba(0,255,255,0.5)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex flex-col items-center justify-center bg-gradient-to-b from-gray-900/70 to-black/60 border border-cyan-400/10 rounded-2xl py-8 px-4 cursor-pointer transition-all group"
+                >
+                  <div className="text-4xl text-cyan-400 group-hover:text-fuchsia-400 transition-colors duration-300 mb-3">
+                    {skill.icon}
+                  </div>
+                  <p className="text-sm font-medium text-gray-300 group-hover:text-white text-center tracking-wide">
+                    {skill.name}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
 
-        .skill-category {
-          margin-bottom: 2.5rem;
-        }
-
-        .category-title {
-          font-size: 1.5rem;
-          margin-bottom: 1rem;
-          color: #00f0ff;
-          font-weight: 600;
-          border-bottom: 1px solid #00f0ff;
-          display: inline-block;
-          padding-bottom: 0.3rem;
-        }
-
-        .skills-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-          gap: 1rem;
-          justify-items: center;
-          align-items: center;
-        }
-
-        .skill-card {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          background: #1a1a1a;
-          color: #00f0ff;
-          padding: 1rem;
-          border-radius: 1rem;
-          transition: all 0.3s ease;
-          cursor: pointer;
-        }
-
-        .skill-card .icon {
-          font-size: 2.5rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .skill-card .name {
-          font-size: 0.95rem;
-          font-weight: 500;
-          text-align: center;
-        }
-      `}</style>
-    </div>
+      <motion.p
+        className="text-center mt-20 text-[var(--gold)] italic"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8 }}
+      >
+        “ज्ञानं चक्षुः — Knowledge is the eye that sees beyond the unseen.”
+      </motion.p>
+    </section>
   );
-};
-
-export default Skills;
+}
