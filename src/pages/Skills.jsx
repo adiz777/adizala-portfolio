@@ -23,47 +23,46 @@ import { IoIosAnalytics } from "react-icons/io";
 import { BiGitBranch } from "react-icons/bi";
 import { RiShieldStarLine } from "react-icons/ri";
 
-const skillCategories = [
+const allSkills = [
+  { name: "Kali Linux", icon: <SiKalilinux /> },
+  { name: "Python", icon: <SiPython /> },
+  { name: "Burp Suite", icon: <SiBurpsuite /> },
+  { name: "SQLMap", icon: <AiOutlineConsoleSql /> },
+  { name: "Network Security", icon: <FaShieldAlt /> },
+  { name: "Encryption", icon: <FaLock /> },
+  { name: "Threat Detection", icon: <RiShieldStarLine /> },
+  { name: "System Hardening", icon: <MdSecurity /> },
+  { name: "Wireshark", icon: <SiWireshark /> },
+  { name: "Network Mapping", icon: <FaNetworkWired /> },
+  { name: "Analytics", icon: <IoIosAnalytics /> },
+  { name: "Linux", icon: <SiLinux /> },
+  { name: "Windows", icon: <FaWindows /> },
+  { name: "Docker", icon: <SiDocker /> },
+  { name: "Cloudflare", icon: <SiCloudflare /> },
+  { name: "GitHub", icon: <SiGithub /> },
+  { name: "Git Branching", icon: <BiGitBranch /> },
+];
+
+const categories = [
   {
-    category: "Offensive Security",
+    title: "Offensive Security",
     color: "from-cyan-400 to-fuchsia-500",
-    skills: [
-      { name: "Kali Linux", icon: <SiKalilinux /> },
-      { name: "Python Scripting", icon: <SiPython /> },
-      { name: "Burp Suite", icon: <SiBurpsuite /> },
-      { name: "SQLMap", icon: <AiOutlineConsoleSql /> },
-    ],
+    desc: "Penetration testing, reconnaissance, and ethical exploitation to uncover system weaknesses before adversaries do.",
   },
   {
-    category: "Defensive Security",
+    title: "Defensive Security",
     color: "from-fuchsia-500 to-yellow-400",
-    skills: [
-      { name: "Network Defense", icon: <FaShieldAlt /> },
-      { name: "Encryption & Locks", icon: <FaLock /> },
-      { name: "Threat Detection", icon: <RiShieldStarLine /> },
-      { name: "System Hardening", icon: <MdSecurity /> },
-    ],
+    desc: "Building resilient systems through firewalls, encryption, and real-time threat monitoring — the dharmic shield of cyberspace.",
   },
   {
-    category: "Networking & Analysis",
+    title: "Networking & Analysis",
     color: "from-blue-400 to-cyan-400",
-    skills: [
-      { name: "Wireshark", icon: <SiWireshark /> },
-      { name: "Network Mapping", icon: <FaNetworkWired /> },
-      { name: "Traffic Analytics", icon: <IoIosAnalytics /> },
-    ],
+    desc: "Monitoring, mapping, and analyzing traffic flows — understanding the invisible threads that connect the digital realm.",
   },
   {
-    category: "Platforms & Tools",
+    title: "Platforms & Tools",
     color: "from-amber-400 to-fuchsia-400",
-    skills: [
-      { name: "Linux", icon: <SiLinux /> },
-      { name: "Windows", icon: <FaWindows /> },
-      { name: "Docker", icon: <SiDocker /> },
-      { name: "Cloudflare", icon: <SiCloudflare /> },
-      { name: "GitHub", icon: <SiGithub /> },
-      { name: "Git Branching", icon: <BiGitBranch /> },
-    ],
+    desc: "Mastering tools, operating systems, and environments that empower digital warriors in both attack and defense.",
   },
 ];
 
@@ -76,45 +75,52 @@ export default function Skills() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        My Cyber Arsenal
+        Cyber Arsenal
       </motion.h1>
 
-      <div className="max-w-6xl mx-auto grid gap-16">
-        {skillCategories.map((cat, idx) => (
+      {/* 🔹 Full Skills Grid */}
+      <motion.div
+        className="max-w-6xl mx-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-8 mb-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
+        {allSkills.map((skill, i) => (
+          <motion.div
+            key={i}
+            whileHover={{
+              scale: 1.15,
+              boxShadow: "0 0 25px rgba(0,255,255,0.4)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="flex flex-col items-center justify-center bg-gradient-to-b from-gray-900/70 to-black/70 border border-cyan-400/10 rounded-2xl py-6 px-4 shadow-md hover:shadow-cyan-400/30 transition-all group cursor-pointer"
+          >
+            <div className="text-3xl text-cyan-400 group-hover:text-fuchsia-400 transition-colors duration-300 mb-2">
+              {skill.icon}
+            </div>
+            <p className="text-sm font-medium text-gray-300 group-hover:text-white text-center tracking-wide">
+              {skill.name}
+            </p>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* 🔹 Category Panels */}
+      <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10">
+        {categories.map((cat, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.2 }}
-            className="rounded-2xl bg-black/40 border border-cyan-400/20 p-8 shadow-lg hover:shadow-cyan-400/30 transition-all"
+            transition={{ delay: 0.5 + idx * 0.2 }}
+            className="bg-black/40 border border-cyan-400/20 rounded-2xl p-6 shadow-lg hover:shadow-cyan-400/30 transition-all"
           >
             <h2
-              className={`text-2xl font-semibold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r ${cat.color}`}
+              className={`text-xl font-semibold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${cat.color}`}
             >
-              {cat.category}
+              {cat.title}
             </h2>
-
-            {/* Responsive glowing grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
-              {cat.skills.map((skill, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{
-                    scale: 1.15,
-                    boxShadow: "0 0 25px rgba(0,255,255,0.5)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex flex-col items-center justify-center bg-gradient-to-b from-gray-900/70 to-black/60 border border-cyan-400/10 rounded-2xl py-8 px-4 cursor-pointer transition-all group"
-                >
-                  <div className="text-4xl text-cyan-400 group-hover:text-fuchsia-400 transition-colors duration-300 mb-3">
-                    {skill.icon}
-                  </div>
-                  <p className="text-sm font-medium text-gray-300 group-hover:text-white text-center tracking-wide">
-                    {skill.name}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+            <p className="text-gray-400 text-sm leading-relaxed">{cat.desc}</p>
           </motion.div>
         ))}
       </div>
@@ -123,7 +129,7 @@ export default function Skills() {
         className="text-center mt-20 text-[var(--gold)] italic"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
+        transition={{ delay: 1.2 }}
       >
         “ज्ञानं चक्षुः — Knowledge is the eye that sees beyond the unseen.”
       </motion.p>
