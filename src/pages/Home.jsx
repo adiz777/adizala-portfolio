@@ -72,13 +72,13 @@ export default function Home() {
         transition={{ delay: 1.5 }}
       >
         <a
-          href="/projects"
+          href="/Projects.jsx"
           className="bg-gradient-to-r from-cyan-500 to-fuchsia-600 px-5 py-2 rounded-lg text-white font-semibold hover:shadow-[0_0_20px_#00f0ff] transition-all"
         >
           View Projects
         </a>
         <a
-          href="/contact"
+          href="/Contact.jsx"
           className="border border-cyan-400 px-5 py-2 rounded-lg text-cyan-400 font-semibold hover:bg-cyan-400/10 hover:shadow-[0_0_15px_#00f0ff] transition-all"
         >
           Get in Touch
