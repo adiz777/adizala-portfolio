@@ -2,22 +2,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaLock, FaCode, FaShieldAlt } from "react-icons/fa";
 import { SiLinux, SiKalilinux } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-gray-200 px-6 relative overflow-hidden">
-      {/* Background glow effect */}
+      {/* Background glow */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-fuchsia-500/5 to-transparent blur-3xl"
-        animate={{
-          opacity: [0.4, 0.8, 0.4],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.1, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Title */}
@@ -54,16 +48,6 @@ export default function Home() {
         <SiKalilinux className="hover:text-fuchsia-400 transition-all" />
       </motion.div>
 
-      {/* Quote / Tagline */}
-      <motion.p
-        className="max-w-2xl mt-10 text-center text-sm sm:text-base text-gray-400 leading-relaxed"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-      >
-        “Guarding the unseen, defending the unknown — my code is my mantra, my craft is vigilance.”
-      </motion.p>
-
       {/* Buttons */}
       <motion.div
         className="mt-8 flex flex-wrap gap-4 justify-center"
@@ -71,18 +55,25 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
-        <a
-          href="/Projects.jsx"
-          className="bg-gradient-to-r from-cyan-500 to-fuchsia-600 px-5 py-2 rounded-lg text-white font-semibold hover:shadow-[0_0_20px_#00f0ff] transition-all"
-        >
-          View Projects
-        </a>
-        <a
-          href="/Contact.jsx"
-          className="border border-cyan-400 px-5 py-2 rounded-lg text-cyan-400 font-semibold hover:bg-cyan-400/10 hover:shadow-[0_0_15px_#00f0ff] transition-all"
-        >
-          Get in Touch
-        </a>
+        {/* View Projects Button */}
+        <motion.div whileTap={{ scale: 0.95 }}>
+          <Link
+            to="/projects"
+            className="bg-gradient-to-r from-cyan-500 to-fuchsia-600 px-5 py-2 rounded-lg text-white font-semibold hover:shadow-[0_0_20px_#00f0ff] transition-all"
+          >
+            View Projects
+          </Link>
+        </motion.div>
+
+        {/* Get in Touch Button */}
+        <motion.div whileTap={{ scale: 0.95 }}>
+          <Link
+            to="/contact"
+            className="border border-cyan-400 px-5 py-2 rounded-lg text-cyan-400 font-semibold hover:bg-cyan-400/10 hover:shadow-[0_0_15px_#00f0ff] transition-all"
+          >
+            Get in Touch
+          </Link>
+        </motion.div>
       </motion.div>
 
       {/* Sanskrit mantra */}
