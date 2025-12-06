@@ -1,9 +1,10 @@
+// src/App.jsx
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Loading from "./components/Loading"; // 👈 Import here
+import Loading from "./components/Loading";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -21,9 +22,7 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
+  if (loading) return <Loading />;
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-gray-200 flex flex-col">
@@ -37,8 +36,9 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
+            style={{ pointerEvents: "auto" }} // 👈 FIXED NAVIGATION BLOCK ISSUE
           >
-            <Routes location={location} key={location.pathname}>
+            <Routes location={location}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/projects" element={<Projects />} />
