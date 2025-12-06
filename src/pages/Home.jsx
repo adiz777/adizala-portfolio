@@ -58,7 +58,7 @@ export default function Home() {
         {/* View Projects Button */}
         <motion.div whileTap={{ scale: 0.95 }}>
           <Link
-            to="/projects"
+            to="https://adizala.me/projects"
             className="bg-gradient-to-r from-cyan-500 to-fuchsia-600 px-5 py-2 rounded-lg text-white font-semibold hover:shadow-[0_0_20px_#00f0ff] transition-all"
           >
             View Projects
@@ -68,7 +68,7 @@ export default function Home() {
         {/* Get in Touch Button */}
         <motion.div whileTap={{ scale: 0.95 }}>
           <Link
-            to="/contact"
+            to="https://adizala.me/contact"
             className="border border-cyan-400 px-5 py-2 rounded-lg text-cyan-400 font-semibold hover:bg-cyan-400/10 hover:shadow-[0_0_15px_#00f0ff] transition-all"
           >
             Get in Touch
