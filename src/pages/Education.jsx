@@ -22,20 +22,7 @@ export default function Education() {
     },
   ];
 
-  const certifications = [
-    {
-      name: "CompTIA A+ (Core 1 & 2) — Pursuing",
-      description:
-        "Vendor-neutral IT certification covering troubleshooting, hardware, networking, and security best practices.",
-      icon: <FaCertificate className="text-yellow-400 text-3xl" />,
-    },
-    {
-      name: "Ethical Hacking & Penetration Testing (Self-Learning)",
-      description:
-        "Hands-on exploration of reconnaissance, exploitation, and defensive techniques in controlled environments.",
-      icon: <FaCertificate className="text-yellow-400 text-3xl" />,
-    },
-  ];
+
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-gray-200 px-6 py-10">
@@ -46,7 +33,7 @@ export default function Education() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Education & Certifications
+        Education 
       </motion.h1>
 
       {/* Education Timeline */}
@@ -74,31 +61,7 @@ export default function Education() {
         ))}
       </div>
 
-      {/* Certifications Section */}
-      <div className="max-w-5xl w-full mt-12">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-fuchsia-400 mb-6 text-center">
-          Certifications
-        </h2>
-        <div className="grid sm:grid-cols-2 gap-6">
-          {certifications.map((cert, idx) => (
-            <motion.div
-              key={idx}
-              className="bg-[#111]/60 border border-fuchsia-500/30 rounded-2xl p-6 shadow-lg shadow-fuchsia-500/10 hover:shadow-fuchsia-500/30 transition-all"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.2 }}
-            >
-              <div className="flex items-center gap-4 mb-3">
-                {cert.icon}
-                <h3 className="text-lg sm:text-xl font-semibold text-fuchsia-300">
-                  {cert.name}
-                </h3>
-              </div>
-              <p className="text-sm sm:text-base text-gray-400">{cert.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+      
 
       {/* Mantra */}
       <motion.p
