@@ -36,7 +36,7 @@ export default function Projects() {
         { icon: <FaTools />, name: "Bash" },
         { icon: <FaShieldAlt />, name: "Defensive Security" }
       ],
-      comingSoon: true,
+     link: "https://github.com/Adiz777/Agni.git",
       gradient: "from-orange-500 to-yellow-600"
     }
   ];
